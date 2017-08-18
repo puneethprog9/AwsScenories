@@ -1,0 +1,11 @@
+#!/bin/bash
+ sudo yum update –y
+ sudo yum install -y httpd24 php56 php56-mysqlnd
+ sudo service httpd start
+ sudo chkconfig httpd on
+ mkdir /var/www/inc
+ cp dbinfo.inc /var/www/inc/
+ cp SamplePage.php /var/www/html/
+                
+                
+                
