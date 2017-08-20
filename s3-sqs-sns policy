@@ -1,0 +1,41 @@
+{
+  "Version": "2012-10-17",
+  "Id": "arn:aws:sqs:ap-south-1:252155490270:s3queue/SQSDefaultPolicy",
+  "Statement": [
+    {
+      "Sid": "Sid1503242157395",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::252155490270:root" --need to change 
+      },
+      "Action": "SQS:*",
+      "Resource": "arn:aws:sqs:ap-south-1:252155490270:s3queue" --need to change
+    },
+    {
+      "Sid": "Sid1503242903483",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "SQS:*",
+      "Resource": "arn:aws:sqs:ap-south-1:252155490270:s3queue", --need to change
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:s3:*:*:snsbucketpuneeth"  --need to change
+        }
+      }
+    },
+    {
+      "Sid": "Sid1503243218107",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "SQS:SendMessage",
+      "Resource": "arn:aws:sqs:ap-south-1:252155490270:s3queue", --need to change
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:sns:ap-south-1:252155490270:s3bucket"  --need to change
+        }
+      }
+    }
+  ]
+}
